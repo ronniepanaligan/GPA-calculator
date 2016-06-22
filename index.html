@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="myGPA">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mainController.js"></script>
+  </head>
+  <body ng-controller="mainController as main">
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active">
+              <a href="#">Home</a>
+            </li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">GPA Calculator</h3>
+      </div>
+
+
+      <div class="jumbotron" ng-submit="main.calculate()">
+        <h1>GPA: {{main.GPA }}</h1>
+        <form name="addForm" class="form">
+
+
+          <div class="row">
+            <div class="input-group">
+              <div class="form-group">
+                  <label for="username">Add a class</label>
+                  <input type="text" class="form-control" ng-model="main.new.class" required>
+              </div>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Units <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a ng-click="main.new.units=5">5</a></li>
+                  <li><a ng-click="main.new.units=4">4</a></li>
+                  <li><a ng-click="main.new.units=3">3</a></li>
+                  <li><a ng-click="main.new.units=2">2</a></li>
+                  <li><a ng-click="main.new.units=1">1</a></li>
+                </ul>
+              </div>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grade <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a ng-click="main.A()">A</a></li>
+                  <li><a ng-click="main.Am()">A-</a></li>
+                  <li><a ng-click="main.Bp()">B+</a></li>
+                  <li><a ng-click="main.B()">B</a></li>
+                  <li><a ng-click="main.Bm()">B-</a></li>
+                  <li><a ng-click="main.Cp()">C+</a></li>
+                  <li><a ng-click="main.C()">C</a></li>
+                  <li><a ng-click="main.Cm()">C-</a></li>
+                  <li><a ng-click="main.Dp()">D+</a></li>
+                  <li><a ng-click="main.D()">D</a></li>
+                  <li><a ng-click="main.Dm()">D-</a></li>
+                  <li><a ng-click="main.F()">F</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row submit-btn">
+            <button class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="row" ng-repeat="class in main.classes">
+        <ul class="list-group">
+          <li class="list-group-item">Class: {{class.class}} Grade: {{class.grade}} Units: {{class.units}}</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
